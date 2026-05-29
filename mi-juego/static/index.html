@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Piedra, Papel o Tijera</title>
+  <style>
+    /* Reset básico y fuente */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: sans-serif;
+      background: #1a1a2e;
+      color: #eee;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+    p { color: #aaa; margin-bottom: 2rem; }
+    /* Contenedor de los tres botones */
+    .botones {
+      display: flex;
+      gap: 1.5rem;
+    }
+    /* Cada botón es un formulario que envía su propia opción */
+    .botones form button {           /* El emoji grande */
+      font-size: 3rem;
+      padding: 1rem 1.5rem;
+      border: 2px solid #444;
+      border-radius: 16px;
+      background: #16213e;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.1s, border-color 0.2s;
+    }
+    .botones form button:hover {
+      transform: scale(1.1);   /* Se agranda al pasar el mouse */
+      border-color: #e94560;
+    }
+    /* Etiqueta debajo de cada emoji */
+    .botones form span {
+      display: block;
+      text-align: center;
+      margin-top: 8px;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <h1>Piedra, Papel o Tijera</h1>
+  <p>Elige tu arma</p>
+
+  <div class="botones">
+    <!--
+      Cada botón es su propio formulario.
+      action="/jugar" le dice al navegador a dónde enviar el dato.
+      method="POST" es cómo se envía (por detrás, no en la URL).
+      El input hidden es el valor que va a leer con r.FormValue("jugador").
+    -->
+
+    <form action="/jugar" method="POST">
+      <input type="hidden" name="jugador" value="piedra">
+      <button type="submit">🪨</button>
+      <span>Piedra</span>
+    </form>
+
+    <form action="/jugar" method="POST">
+      <input type="hidden" name="jugador" value="papel">
+      <button type="submit">📄</button>
+      <span>Papel</span>
+    </form>
+
+    <form action="/jugar" method="POST">
+      <input type="hidden" name="jugador" value="tijera">
+      <button type="submit">✂️</button>
+      <span>Tijera</span>
+    </form>
+
+  </div>
+
+</body>
+</html>
